@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amrit Sharma — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-hover: #181818;
+      --red: #ff2a00;
+      --text: #f5f5f0;
+      --muted: #9a9a95;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      padding: 1.4rem 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(8, 8, 8, 0.92), rgba(8, 8, 8, 0));
+      backdrop-filter: blur(6px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: grid;
+      place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #d4d4cf;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #cfcfca;
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6.5rem 4vw 3rem;
+      overflow: hidden;
+      background: radial-gradient(circle at 72% 45%, rgba(255, 42, 0, 0.14), transparent 55%), var(--bg);
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      line-height: 0.84;
+      padding-top: 2rem;
+    }
+
+    .hero-bg-text span {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(7.5rem, 23.5vw, 24rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .hero-bg-text .top-word {
+      color: var(--red);
+    }
+
+    .hero-bg-text .bottom-word {
+      background: linear-gradient(180deg, var(--red) 15%, #3d0900 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 4;
+      max-width: 540px;
+      margin-top: 2rem;
+    }
+
+    .role-stack {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.6rem, 4.6vw, 4.3rem);
+      line-height: 0.94;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+      color: #e8e8e3;
+      max-width: 440px;
+      line-height: 1.65;
+      background: rgba(8, 8, 8, 0.65);
+      backdrop-filter: blur(8px);
+      padding: 1rem 1.2rem;
+      border-left: 2px solid var(--red);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #e02400;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(8, 8, 8, 0.65);
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.5rem;
+      border-radius: 4px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    /* BORDERLESS CUTOUT IMAGE */
+    .hero-portrait-wrap {
+      position: absolute;
+      right: 5vw;
+      bottom: 0;
+      z-index: 3;
+      height: 86vh;
+      max-height: 780px;
+      display: flex;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .hero-portrait {
+      height: 100%;
+      width: auto;
+      max-width: 48vw;
+      object-fit: contain;
+      object-position: bottom center;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      filter: contrast(1.04) saturate(1.04) drop-shadow(0 24px 45px rgba(0, 0, 0, 0.85));
+      -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 76%, transparent 100%);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 4vw;
+      bottom: 1.8rem;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .scroll-hint::before {
+      content: "";
+      width: 2px;
+      height: 22px;
+      background: var(--red);
+      display: inline-block;
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 6.5rem 4vw;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+
+    /* STORY */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .story-text {
+      font-size: 1.08rem;
+      color: #d6d6d0;
+      line-height: 1.8;
+    }
+
+    .story-text p + p {
+      margin-top: 1.2rem;
+    }
+
+    .stack-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+    }
+
+    .stack-box h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* IMPACT */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .impact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.6rem;
+      transition: border-color 0.25s ease;
+    }
+
+    .impact-card:hover {
+      border-color: var(--red);
+    }
+
+    .impact-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .impact-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 42, 0, 0.55);
+      background: var(--surface-hover);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .project-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .project-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 2px;
+    }
+
+    .project-link:hover {
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    .project-card h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CREDENTIALS */
+    .cred-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .cred-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cred-item h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .cred-item span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: linear-gradient(135deg, #141414 0%, #0c0c0c 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav {
+        display: none;
+      }
+      .hero {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 6rem;
+        min-height: auto;
+      }
+      .hero-left {
+        max-width: 100%;
+      }
+      .hero-portrait-wrap {
+        position: relative;
+        right: auto;
+        height: 440px;
+        margin-top: 2rem;
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-portrait {
+        max-width: 90vw;
+      }
+      .scroll-hint {
+        display: none;
+      }
+      .story-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="brand">
+      <div class="brand-badge">AS</div>
+      <span class="brand-name">Amrit Sharma</span>
+    </a>
+    <nav>
+      <a href="#story">Story</a>
+      <a href="#projects">Projects</a>
+      <a href="#impact">Impact</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-bg-text" aria-hidden="true">
+      <span class="top-word">AMRIT</span>
+      <span class="bottom-word">SHARMA</span>
+    </div>
+
+    <div class="hero-left">
+      <h1 class="role-stack">
+        DEVELOPER<br />
+        ENGINEER<br />
+        CREATOR<br />
+        RELENTLESS
+      </h1>
+      <p class="hero-bio">
+        I build things that work — full-stack, AI-integrated, and shipped solo.
+        Three products live, one CVE patched, zero funding raised.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#projects" class="btn-primary">View Shipped Work</a>
+        <a href="https://github.com/amritsharma2409-jpg" target="_blank" rel="noopener" class="btn-outline">GitHub Profile</a>
+      </div>
+    </div>
+
+    <!-- IMAGE PATH: Works on GitHub Pages (same repo folder) + local Downloads fallback -->
+    <div class="hero-portrait-wrap">
+      <img
+        src="Code_Generated_Image.png"
+        onerror="this.onerror=null; this.src='file:///C:/Users/ADMIN/Downloads/Code_Generated_Image.png';"
+        alt="Amrit Sharma"
+        class="hero-portrait"
+      />
+    </div>
+
+    <div class="scroll-hint">Scroll to explore</div>
+  </main>
+
+  <section id="story">
+    <span class="section-label">01 // Story</span>
+    <h2 class="section-title">Engineering With Zero Fluff</h2>
+    <div class="story-grid">
+      <div class="story-text">
+        <p>
+          I'm Amrit Sharma, a Computer Science &amp; Engineering (Data Science &amp; AI) undergraduate at Shri Ramswaroop Memorial University, Lucknow. I focus on turning raw ideas into fast, production-ready web platforms and AI workflows.
+        </p>
+        <p>
+          From architecting clinical AI intake systems for Smart India Hackathon 2026 to shipping Vastu-compliant floor plan estimators and computer vision pipelines, every system I build is engineered end-to-end for real users.
+        </p>
+      </div>
+      <div class="stack-box">
+        <h3>Core Stack &amp; Tooling</h3>
+        <div class="pill-wrap">
+          <span class="pill">Next.js</span>
+          <span class="pill">React</span>
+          <span class="pill">Python</span>
+          <span class="pill">C / C++</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">LangChain</span>
+          <span class="pill">Gemini API</span>
+          <span class="pill">Groq API</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Git &amp; Vercel</span>
+          <span class="pill">Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <span class="section-label">02 // Impact</span>
+    <h2 class="section-title">Execution Metrics</h2>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-num">03+</div>
+        <div class="impact-desc">Live full-stack &amp; AI products deployed in production</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">01</div>
+        <div class="impact-desc">Security vulnerability (CVE) identified and patched</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">SIH '26</div>
+        <div class="impact-desc">Team Leader, Team Desi Kalakar (PS ID 26047)</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">₹0</div>
+        <div class="impact-desc">External funding raised — built &amp; shipped independently</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="section-label">03 // Projects</span>
+    <h2 class="section-title">Selected Builds</h2>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div>
+          <div class="project-top">
+            <span class="project-tag">AI Healthcare • SIH 2026</span>
+            <a href="https://vedicare-sih.vercel.app" target="_blank" rel="noopener" class="project-link">Live Demo ↗</a>
+          </div>
+          <h3>Vedicare</h3>
+          <p>AI-powered clinical history intake and Dosha assessment platform built for Ayurveda practitioners under Smart India Hackathon Problem Statement 26047.</p>
+        </div>
+        <div class="pill-wrap">
+          <span class="pill">Next.js</span>
+          <span class="pill">Gemini API</span>
+          <span class="pill">Tailwind CSS</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div>
+          <div class="project-top">
+            <span class="project-tag">AI Architecture • 3D Web</span>
+            <a href="https://constructai-mu.vercel.app" target="_blank" rel="noopener" class="project-link">Live Demo ↗</a>
+          </div>
+          <h3>ConstructAI</h3>
+          <p>AI-driven architectural floor-plan generator, Vastu compliance analyzer, and automated material cost estimator featuring an interactive 3D hero experience.</p>
+        </div>
+        <div class="pill-wrap">
+          <span class="pill">React</span>
+          <span class="pill">Spline 3D</span>
+          <span class="pill">Generative AI</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div>
+          <div class="project-top">
+            <span class="project-tag">Computer Vision • Full-Stack</span>
+            <a href="https://github.com/amritsharma2409-jpg" target="_blank" rel="noopener" class="project-link">Source ↗</a>
+          </div>
+          <h3>VisionCaption AI</h3>
+          <p>Automated image understanding and captioning pipeline powered by vision-language models, deployed across Vercel, Render, and Hugging Face.</p>
+        </div>
+        <div class="pill-wrap">
+          <span class="pill">Python</span>
+          <span class="pill">Hugging Face</span>
+          <span class="pill">REST API</span>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div>
+          <div class="project-top">
+            <span class="project-tag">AI Wellness • Low-Latency LLM</span>
+            <a href="https://github.com/amritsharma2409-jpg/mindease-pro" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+          </div>
+          <h3>MindEase Pro</h3>
+          <p>Real-time conversational wellness companion engineered with ultra-fast inference via Groq API and cloud orchestration on GCP.</p>
+        </div>
+        <div class="pill-wrap">
+          <span class="pill">Groq API</span>
+          <span class="pill">GCP</span>
+          <span class="pill">JavaScript</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <span class="section-label">04 // Credentials</span>
+    <h2 class="section-title">Education &amp; Certifications</h2>
+    <div class="cred-list">
+      <div class="cred-item">
+        <h4>B.Tech. in Computer Science &amp; Engineering (Data Science &amp; AI)</h4>
+        <span>SRMU Lucknow • 2025 – 2029</span>
+      </div>
+      <div class="cred-item">
+        <h4>Professional Certification in AI &amp; Data Science</h4>
+        <span>iHUB DivyaSampark, IIT Roorkee &amp; Intellipaat</span>
+      </div>
+      <div class="cred-item">
+        <h4>Python for Data Science (Proctored Certification)</h4>
+        <span>NPTEL / SWAYAM</span>
+      </div>
+      <div class="cred-item">
+        <h4>Artificial Intelligence Internship</h4>
+        <span>CodSoft</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <span class="section-label">05 // Contact</span>
+      <h2>Let's Build Something Real</h2>
+      <p>Open to software engineering internships, AI product collaborations, and hackathon builds.</p>
+      <div class="hero-cta-row" style="justify-content: center;">
+        <a href="https://github.com/amritsharma2409-jpg" target="_blank" rel="noopener" class="btn-primary">Connect on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 AMRIT SHARMA</span>
+    <span>BUILT SOLO • LUCKNOW, IN</span>
+  </footer>
+
+</body>
+</html>
